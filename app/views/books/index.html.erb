@@ -1,6 +1,6 @@
 <div class='container px-5 px-sm-0'>
 	<div class='row'>
-    <%= render 'shared/user_info', book: @book, user: @user %>
+    <%= render 'layouts/sidebar', book: @book, user: @user %>
 		<div class='col-md-8 offset-md-1'>
 			<h2>Books</h2>
 			<!-- 投稿した書籍一覧表示を作成しましょう。 -->
@@ -14,6 +14,14 @@
 					</tr>
 				</thead>
 				<tbody>
+				<% @books.each do |book| %>
+					<tr>
+						<td>
+							<span><%= book.title %></span>
+							<span><%= book.body %></span>
+						</td>
+					</tr>
+				<% end %>
 				</tbody>
 			</table>
 		</div>

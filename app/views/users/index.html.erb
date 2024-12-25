@@ -1,18 +1,33 @@
 <div class='container px-5 px-sm-0'>
 	<div class='row'>
-    <%= render 'shared/user_info', book: @book, user: @user %>
+    <%= render 'layouts/sidebar', book: @book, user: @user %>
     <div class='col-md-8 offset-md-1'>
       <h2>Users</h2>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th></th>
             <th>image</th>
             <th>name</th>
             <th colspan="3"></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <span>
+                <%= image_tag user.get_profile_image(80, 80)  %>
+              </span>
+            </td>
+						<td>
+							<span><%= user.name %></span>
+            </td>
+            <td>
+              <span><%= link_to 'Show', user_path(user.id) %></span>
+						</td>
+					</tr>
+				<% end %>
+        </tbody>
       </table>
     </div>
 	</div>
