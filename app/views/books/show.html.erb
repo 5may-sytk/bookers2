@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <div class='container px-5 px-sm-0'>
 	<div class='row'>
     <%= render 'layouts/sidebar', book: @book, user: @user %>
@@ -6,18 +10,26 @@
       <table class='table'>
         <tbody>
           <tr>
-            <td></td>
-            <!-- 投稿したユーザー画像⁺改行してUserリンク -->
-            <td></td>
-            <!-- タイトル→showへのリンク -->
-            <td></td>
-            <!-- opinion -->
+          <% @books.each do |book| %>
             <td>
-            <% if @user == current_user %>
+              <>
+                <%= image_tag user.get_profile_image(100, 100)  %><br>
+                <%= link_to "user.name" user_path(user.id) %>
+              </span>
+            </td>
+            <td>
+              <span><%= book.title %></span>
+            </td>
+            <!-- タイトル→showへのリンク -->
+            <td>
+              <span><%= book.body %></span>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_book_path(book.id) , class="btn btn-sm btn-success" do%>
             </td>
             <!-- edit -->
             <td>
-            <% if @user == current_user %>
+              <span><%= link_to "Destroy", book_path(book.id), method: :delete, class="btn btn-sm btn-danger" %><span>
             </td>
             <!-- delete -->
           </tr>

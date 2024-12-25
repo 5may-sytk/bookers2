@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <div class='container px-5 px-sm-0'>
 	<div class='row'>
     <%= render 'layouts/sidebar', book: @book, user: @user %>
@@ -21,6 +25,8 @@
             </td>
 						<td>
 							<span><%= user.name %></span>
+            </td>
+            <td>
             </td>
             <td>
               <span><%= link_to 'Show', user_path(user.id) %></span>

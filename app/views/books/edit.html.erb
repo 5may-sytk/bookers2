@@ -1,0 +1,27 @@
+<div>
+  <%= flash[:alert] %>
+</div>
+
+<div class="container">
+  <div class="row">
+    < class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
+      <%= form_with model: @book do |f| %>
+        <div class="form-grope">
+          <label for="input_title">Title</label><br>
+          <%= f.text_field :book_title, autofocus: true, id:"BookTitle", placeholder:"Title"%>
+        </div>
+        <div class="form-grope">
+          <label for="input_opinion">Opinion</label><br>
+          <%= f.text_field :book_opinion, autofocus: true, id:"BookOpinion", placeholder:"opinion"%>
+        </div>
+        <div class="form-grope">
+          <%= f.submit "UpdateBook" class="btn btn-success" %>
+        </div>
+      <% end %>
+      <a class="show" href="/books/<%= @book.id %>">Show</a>
+|
+      <a class="back" href="/books">Back</a>
+    </div>
+  </div>
+</div>

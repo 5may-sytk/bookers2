@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:alert] %>
+</div>
+
 <div class='container px-5 px-sm-0'>
 	<div class='row'>
     <%= render 'layouts/sidebar', book: @book, user: @user %>
@@ -14,15 +18,21 @@
 					</tr>
 				</thead>
 				<tbody>
-				<% @books.each do |book| %>
+				<% @books.each do |book,user| %>
 					<tr>
+            <td>
+              <span>
+                <%= image_tag user.get_profile_image(80, 80)  %>
+              </span>
+            </td>
 						<td>
 							<span><%= book.title %></span>
+            </td>
+            <td>
 							<span><%= book.body %></span>
-						</td>
 					</tr>
 				<% end %>
-				</tbody>
+        </tbody>
 			</table>
 		</div>
 	</div>
