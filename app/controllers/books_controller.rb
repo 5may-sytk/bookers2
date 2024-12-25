@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = PostImage.new(book_params)
+    @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
     redirect_to book_path(@book.id)
@@ -12,6 +12,8 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
+    @user = current_user
   end
 
   def show
