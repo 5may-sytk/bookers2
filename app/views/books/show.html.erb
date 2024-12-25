@@ -7,14 +7,18 @@
         <tbody>
           <tr>
             <td></td>
-            <!-- ユーザー画像⁺改行してUserリンク -->
+            <!-- 投稿したユーザー画像⁺改行してUserリンク -->
             <td></td>
             <!-- タイトル→showへのリンク -->
             <td></td>
             <!-- opinion -->
-            <td></td>
+            <td>
+            <% if @user == current_user %>
+            </td>
             <!-- edit -->
-            <td></td>
+            <td>
+            <% if @user == current_user %>
+            </td>
             <!-- delete -->
           </tr>
         </tbody>
