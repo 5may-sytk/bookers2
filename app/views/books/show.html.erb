@@ -10,28 +10,30 @@
       <table class='table'>
         <tbody>
           <tr>
-          <% @books.each do |book| %>
+          <% #@book.each do |book| %>
             <td>
-              <>
-                <%= image_tag user.get_profile_image(100, 100)  %><br>
-                <%= link_to "user.name" user_path(user.id) %>
+              <span>
+                <%= image_tag @book_id.user.get_profile_image(100,100) %><br>
+                <%= link_to @book_id.user.name, user_path(@book_id.user.id) %>
               </span>
             </td>
             <td>
-              <span><%= book.title %></span>
+              <span>
+                <%= link_to book_path(@book_id.id) do %>
+                  <%= @book_id.title %>
+                <% end %>
+              </span>
             </td>
-            <!-- タイトル→showへのリンク -->
             <td>
-              <span><%= book.body %></span>
+              <span><%= @book_id.body %></span>
             </td>
             <td>
-              <%= link_to "Edit", edit_book_path(book.id) , class="btn btn-sm btn-success" do%>
+              <%= link_to "Edit", edit_book_path(@book_id.id) , class:"btn btn-sm btn-success" %>
             </td>
-            <!-- edit -->
             <td>
-              <span><%= link_to "Destroy", book_path(book.id), method: :delete, class="btn btn-sm btn-danger" %><span>
+              <span><%= link_to "Destroy", book_path(@book_id.id), method: :delete, class:"btn btn-sm btn-danger" %><span>
             </td>
-            <!-- delete -->
+          <%# end %>
           </tr>
         </tbody>
       </table>
