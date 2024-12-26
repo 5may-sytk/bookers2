@@ -20,19 +20,19 @@
 
       <%= form_with model: @user do |f| %>
         <div class="form-grope">
-          <label for="inputName">Name</label><br>
+          <label for="input Name">Name</label><br>
           <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
         </div>
         <div class="form-grope">
-          <label for="inputImage">Image</label><br>
+          <label for="input Image">Image</label><br>
           <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
         </div>
         <div class="form-grope">
-          <label for="inputName">Introduction</label><br>
+          <label for="input Name">Introduction</label><br>
           <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"Introduction"%>
         </div>
         <div class="form-grope">
-          <%= f.submit "UpdateUser", class:"btn btn-secondary" %>
+          <%= f.submit "Update User", class:"btn btn-secondary" %>
         </div>
       <% end %>
     </div>

@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     # @book = Book.new
     @book.user_id = current_user.id
     if @book.save
-      flash[:notice] = "Book was successfully created."
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)
     else
       @books = Book.all
@@ -49,15 +49,23 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    if @book.destroy
+      flash.now[:notice] = "Book was successfully destroyed."
+      redirect_to '/books'
+    end
+  end
+
   private
   def book_params
     params.require(:book).permit(:title, :body, :book_id)
   end
 
   def is_matching_login_user
-    user = User.find(params[:id]) 
-    unless user.id == current_user
-      redirect_to user_path(current_user.id)
+    book = Book.find(params[:id]) 
+    unless book.user.id == current_user.id
+      redirect_to books_path
     end
   end
 
